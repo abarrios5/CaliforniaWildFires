@@ -27,3 +27,45 @@ fig = px.choropleth(df, geojson=counties, locations='fips', color='unemp',
                     )
 fig.update_layout(margin={"r": 0, "t": 0, "l": 0, "b": 0})
 fig.show()
+
+
+///////////////////////
+from tkinter import *
+from PIL import ImageTk, Image
+import numpy as np
+import matplotlib.pyplot as plt
+import pandas as pd
+
+sample_data = pd.read_csv('California_Fire_Incidents.csv')
+
+root = Tk()
+root.title("California")
+root.geometry("400x200")
+
+def graph():
+    plt.hist(sample_data.AcresBurned, 50)
+    plt.show()
+
+
+def gra():
+    plt.plot(sample_data.AcresBurned)
+    plt.show
+
+
+my_button = Button(root, text="GraphIt", command=graph)
+my_button.pack()
+
+root.mainloop()
+
+
+/////
+anvas = tk.Canvas(root, height=HEIGHT, width=WIDTH)
+canvas.pack()
+
+frame = tk.Frame(root, bg='blue')
+frame.place(relwidth=1, relheight=1)
+
+button = tk.Button(frame, text="Histogram",command= graph())
+button.grid(row=0, column=0)
+button1 = tk.Button(frame, text="Plot", command= gra())
+button1.grid(row=1, column=0)
