@@ -9,9 +9,13 @@ from PIL import ImageTk, Image
 import numpy as np
 import matplotlib.pyplot as plt
 import pandas as pd
+from numba import jit
 
 # main window
 # which inherits QDialog
+import DataCsv
+
+
 class Window(QDialog):
 
     # constructor
@@ -32,7 +36,7 @@ class Window(QDialog):
 
         # Just some button connected to 'plot' method ++++++++
         self.button = QPushButton('Plot')
-        self.button1 = QPushButton('P')
+        self.button1 = QPushButton('Acres Burned')
 
         # adding action to the button  ++++++++
         self.button.clicked.connect(self.plot)
@@ -72,7 +76,7 @@ class Window(QDialog):
 
     def graph(self):
         sample_data = pd.read_csv('California_Fire_Incidents.csv')
-        plt.hist(sample_data.AcresBurned, 50)
+        plt.plot(sample_data.AcresBurned)
         plt.show()
 
 
